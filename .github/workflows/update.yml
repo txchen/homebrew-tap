@@ -1,0 +1,71 @@
+name: Update Altty
+on:
+  schedule:
+    - cron: '17,47 * * * *'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: update-altty
+  cancel-in-progress: false
+jobs:
+  update:
+    if: github.ref == 'refs/heads/main'
+    runs-on: macos-15
+    timeout-minutes: 20
+    env:
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - name: Find a newer stable release
+        id: release
+        run: python3 scripts/select-release.py
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        if: steps.release.outputs.changed == 'true'
+        with:
+          repository: txchen/altty
+          ref: refs/tags/${{ steps.release.outputs.version }}
+          path: .build/source
+          persist-credentials: false
+      - name: Download and verify the public release
+        if: steps.release.outputs.changed == 'true'
+        env:
+          VERSION: ${{ steps.release.outputs.version }}
+        run: |
+          mkdir -p .build/release
+          gh release download "$VERSION" --repo txchen/altty --dir .build/release --pattern 'Altty-*-arm64.zip' --pattern checksums.txt --pattern release-metadata.json
+          python3 - "$VERSION" <<'PY'
+          import hashlib, json, pathlib, sys
+          version = sys.argv[1]
+          p = pathlib.Path('.build/release')
+          m = json.loads((p/'release-metadata.json').read_text())
+          artifact = f'Altty-{version}-arm64.zip'
+          assert m['version'] == version and m['artifact'] == artifact
+          assert hashlib.sha256((p/artifact).read_bytes()).hexdigest() == m['sha256']
+          assert (p/'checksums.txt').read_text().strip() == f"{m['sha256']}  {artifact}"
+          PY
+          BUILD_VERSION="$(python3 -c 'import json; print(json.load(open(".build/release/release-metadata.json"))["build_version"])')"
+          .build/source/scripts/verify-release.sh ".build/release/Altty-$VERSION-arm64.zip" "$VERSION" "$BUILD_VERSION" --distribution
+          SHA256="$(awk '{print $1}' .build/release/checksums.txt)"
+          mkdir -p Casks
+          .build/source/scripts/render-cask.sh "$VERSION" "$SHA256" txchen/altty > Casks/altty.rb
+          ruby -c Casks/altty.rb
+      - name: Verify clean install and upgrade before updating the tap
+        if: steps.release.outputs.changed == 'true'
+        run: |
+          if [[ -f .build/previous/altty.rb ]]; then
+            .build/source/scripts/test-cask-lifecycle.sh Casks/altty.rb .build/previous/altty.rb
+          else
+            .build/source/scripts/test-cask-lifecycle.sh Casks/altty.rb
+          fi
+      - name: Publish the verified Cask
+        if: steps.release.outputs.changed == 'true'
+        env:
+          VERSION: ${{ steps.release.outputs.version }}
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add Casks/altty.rb
+          git diff --cached --check
+          git commit -m "Update Altty to $VERSION"
+          git push origin HEAD:main
