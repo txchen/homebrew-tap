@@ -1,8 +1,8 @@
 cask "altty" do
-  version "0.1.0"
-  sha256 "559c37118de95333ab2d300f925d150809ed69417653ab51f37490d9d2a7b900"
+  version "0.2.0"
+  sha256 "78d9fc6e7ff9394a848e25a87c4754ee863d660b9b1486844d4c753cf99e0775"
 
-  url "https://github.com/txchen/altty/releases/download/0.1.0/Altty-0.1.0-arm64.zip"
+  url "https://github.com/txchen/altty/releases/download/0.2.0/Altty-0.2.0-arm64.zip"
   name "Altty"
   desc "Native Apple-silicon menu-bar window switcher"
   homepage "https://github.com/txchen/altty"
