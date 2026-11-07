@@ -8,7 +8,7 @@ cask "altty" do
   homepage "https://github.com/txchen/altty"
 
   depends_on arch: :arm64
-  depends_on macos: ">= :sequoia"
+  depends_on macos: :sequoia
 
   app "Altty.app"
 
