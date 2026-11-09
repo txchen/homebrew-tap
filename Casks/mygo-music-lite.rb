@@ -1,12 +1,12 @@
 cask "mygo-music-lite" do
-  version "0.3.1"
-  sha256 "951718691637f49af654c99848839d6295f8c40cea4c744050a6715c0c30c06f"
+  version "0.4.0"
+  sha256 "26cde0efae92ba1eba330605132353e7ba78bb6ca9795d349bfa009b05af04b9"
 
-  url "https://api.github.com/repos/txchen/mygo-music-lite/releases/assets/728051878",
+  url "https://api.github.com/repos/txchen/mygo-music-lite/releases/assets/728831627",
       header: "Accept: application/octet-stream"
   container type: :zip
   name "MyGo Music Lite"
-  desc "Local music player with AVPlayer and optional mpv playback"
+  desc "Music player with bundled FFmpeg and miniaudio playback"
   homepage "https://github.com/txchen/mygo-music-lite"
 
   depends_on arch: :arm64
