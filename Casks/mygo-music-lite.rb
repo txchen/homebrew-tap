@@ -1,8 +1,8 @@
 cask "mygo-music-lite" do
-  version "0.4.1"
-  sha256 "a0be3fcfde46ad81524b2a8d7f81b37f6e3a0104b16d8dce97244bdf96030df7"
+  version "0.4.2"
+  sha256 "c79b3202831fa0a2e55434fb0d4463557a0f995ea1f449ab2255455a014a7537"
 
-  url "https://api.github.com/repos/txchen/mygo-music-lite/releases/assets/729383777",
+  url "https://api.github.com/repos/txchen/mygo-music-lite/releases/assets/729647616",
       header: "Accept: application/octet-stream"
   container type: :zip
   name "MyGo Music Lite"
