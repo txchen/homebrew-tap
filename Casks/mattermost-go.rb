@@ -1,6 +1,6 @@
 cask "mattermost-go" do
-  version "0.4.0"
-  sha256 "8f7d87d2b5ded18000ff7a04f6c5645948eea454be5ec357705dcd1f98e36151"
+  version "0.5.0"
+  sha256 "3a1d314a44b66818f246d417e50ede218ddb923deb55bce91fe14314248e3ac6"
 
   url "https://github.com/txchen/mattermostgo/releases/download/v#{version}/mattermost-go-#{version}.dmg"
   name "Mattermost Go"
