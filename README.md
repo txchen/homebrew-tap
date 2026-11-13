@@ -2,6 +2,17 @@
 
 Signed and notarized macOS applications from txchen.
 
+## Mattermost Go
+
+A native Mattermost client. Universal app for macOS 12 or later.
+
+```sh
+brew install --cask txchen/tap/mattermost-go
+open "/Applications/Mattermost Go.app"
+```
+
+Update with `brew update && brew upgrade --cask mattermost-go`. `brew uninstall --zap --cask mattermost-go` also removes the server list and caches; session tokens stay in the Keychain under `com.github.txchen.mattermostgo`.
+
 ## Altty
 
 Requires an Apple-silicon Mac and macOS 15 or later.
