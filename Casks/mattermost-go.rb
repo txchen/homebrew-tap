@@ -1,12 +1,13 @@
 cask "mattermost-go" do
-  version "0.5.1"
-  sha256 "3520a0e1aa444aa94ddb459772eb5167b3df9e508537c1b81c767cb064918ff1"
+  version "0.5.2"
+  sha256 "0190588e78a98ad8e2f34ded6a3c2cd235650976326c7575817aa09deddd3153"
 
   url "https://github.com/txchen/mattermostgo/releases/download/v#{version}/mattermost-go-#{version}.dmg"
   name "Mattermost Go"
   desc "Native Mattermost client"
   homepage "https://github.com/txchen/mattermostgo"
 
+  auto_updates true
   depends_on macos: :monterey
 
   app "Mattermost Go.app"
