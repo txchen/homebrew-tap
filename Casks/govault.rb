@@ -8,7 +8,7 @@ cask "govault" do
   homepage "https://github.com/txchen/govault"
 
   depends_on arch: :arm64
-  depends_on macos: ">= :big_sur"
+  depends_on macos: :big_sur
 
   app "GoVault.app"
 
