@@ -1,12 +1,13 @@
 cask "govault" do
-  version "0.1.1"
-  sha256 "f4e2d1768781d234d5d5937bda1211ae471dd73b21055c6caf6a4fc298357dd5"
+  version "0.1.2"
+  sha256 "d4eeaadf4eaae8d1083566ceebc637d2820a816323fc51491937477065d0779c"
 
-  url "https://github.com/txchen/govault/releases/download/v#{version}/GoVault-#{version}-macos-arm64.dmg"
+  url "https://github.com/txchen/govault/releases/download/v#{version}/govault-#{version}-macos-arm64.dmg"
   name "GoVault"
   desc "Native desktop client for self-hosted Vaultwarden servers"
   homepage "https://github.com/txchen/govault"
 
+  auto_updates true
   depends_on arch: :arm64
   depends_on macos: :big_sur
 
