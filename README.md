@@ -2,6 +2,17 @@
 
 Signed and notarized macOS applications from txchen.
 
+## GoVault
+
+A native desktop client for self-hosted Vaultwarden (Bitwarden-compatible) servers. Requires an Apple-silicon Mac and macOS 11 or later.
+
+```sh
+brew install --cask txchen/tap/govault
+open /Applications/GoVault.app
+```
+
+Update with `brew update && brew upgrade --cask govault`. `brew uninstall --zap --cask govault` also removes local encrypted vault snapshots and caches; saved credentials stay in the Keychain under `dev.txchen.govault`.
+
 ## Mattermost Go
 
 A native Mattermost client. Universal app for macOS 12 or later.
