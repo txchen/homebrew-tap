@@ -1,6 +1,6 @@
 cask "govault" do
-  version "0.1.0"
-  sha256 "56441e0c6610a3a89ec58bd99cd1f8a8304835e9d7c5a7cc669fe8e7023e7f13"
+  version "0.1.1"
+  sha256 "f4e2d1768781d234d5d5937bda1211ae471dd73b21055c6caf6a4fc298357dd5"
 
   url "https://github.com/txchen/govault/releases/download/v#{version}/GoVault-#{version}-macos-arm64.dmg"
   name "GoVault"
