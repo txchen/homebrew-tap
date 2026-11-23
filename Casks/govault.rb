@@ -1,6 +1,6 @@
 cask "govault" do
-  version "0.3.5"
-  sha256 "8562b1292ce7fd7f970fb1ccab2eea52f76918384430917b64e2ca48f6510b1d"
+  version "0.4.0"
+  sha256 "29fde7b894e85b255bc3912516d461e4a2326f0b7659a8a573f1b17aa617198e"
 
   url "https://github.com/txchen/govault/releases/download/v#{version}/govault-#{version}-macos-arm64.dmg"
   name "GoVault"
@@ -12,6 +12,7 @@ cask "govault" do
   depends_on macos: :big_sur
 
   app "GoVault.app"
+  binary "#{appdir}/GoVault.app/Contents/MacOS/gv"
 
   zap trash: [
     "~/Library/Application Support/dev.txchen.govault",
