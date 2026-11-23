@@ -1,6 +1,6 @@
 cask "xframe" do
-  version "0.1.5,6"
-  sha256 "1c1f4627a1e26bab690062aefec5ba5d8ffedace4756033d2495e6585aa9a8a5"
+  version "0.1.6,7"
+  sha256 "1a3c204ae867273f29c023c061d4c5d336c6a1d32b19dbb8b637e2c3a99ac34c"
 
   url "https://github.com/txchen/xframe/releases/download/v#{version.csv.first}/XFrame-#{version.csv.first}-#{version.csv.second}-macos27-arm64.zip"
   name "XFrame"
