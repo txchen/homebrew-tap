@@ -1,6 +1,6 @@
 cask "govault" do
-  version "0.4.1"
-  sha256 "6d3a88d5f7157cb8958052354dc37c34031ea784360cdc537ffad3afde766fc4"
+  version "0.5.0"
+  sha256 "9421726ed99dfec43063dd5e59cbc1be1a419b8acb4881fc55b215884c8e8778"
 
   url "https://github.com/txchen/govault/releases/download/v#{version}/govault-#{version}-macos-arm64.dmg"
   name "GoVault"
@@ -9,7 +9,7 @@ cask "govault" do
 
   auto_updates true
   depends_on arch: :arm64
-  depends_on macos: :big_sur
+  depends_on macos: :ventura
 
   app "GoVault.app"
   binary "#{appdir}/GoVault.app/Contents/MacOS/gv"
